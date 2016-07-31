@@ -1,0 +1,18 @@
+sudo apt-get update
+sudo apt-get install -y bluez-tools pulseaudio-module-bluetooth
+sudo mkdir -p /backup/etc/bluetooth
+sudo mv /etc/bluetooth/audio.conf /backup/etc/bluetooth/audio.conf
+sudo touch /etc/bluetooth/audio.conf
+sudo echo [General] >> /etc/bluetooth/audio.conf
+sudo echo Disable=Socket >> /etc/bluetooth/audio.conf
+sudo echo Enable=Media,Source,Sink,Gateway >> /etc/bluetooth/audio.conf
+sudo systemctl restart bluetooth
+pactl unload-module module-bluetooth-discover
+pactl load-module module-bluetooth-discover
+pactl load-module module-switch-on-connect
+sudo echo bt-adapter --set Powered 1 >> /usr/bin/chip-bt-pair
+sudo echo bt-adapter --set Discoverable 1 >> /usr/bin/chip-bt-pair
+sudo echo bt-agent -c NoInputNoOutput & >> /usr/bin/chip-bt-pair
+sudo chmod 755 /usr/bin/chip-bt-pair
+echo  reboot your chip 
+echo run sudo chip-bt-pair
