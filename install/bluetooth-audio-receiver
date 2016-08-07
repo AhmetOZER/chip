@@ -10,9 +10,10 @@ sudo systemctl restart bluetooth
 pactl unload-module module-bluetooth-discover
 pactl load-module module-bluetooth-discover
 pactl load-module module-switch-on-connect
+sudo rm -rf /usr/bin/chip-bt-pair
 sudo echo bt-adapter --set Powered 1 >> /usr/bin/chip-bt-pair
 sudo echo bt-adapter --set Discoverable 1 >> /usr/bin/chip-bt-pair
-sudo echo pulseaudio --high-priority --realtime --disallow-exit  -D >> /usr/bin/chip-bt-pair
+sudo echo pulseaudio --high-priority --realtime --disallow-exit  --disable-shm -D >> /usr/bin/chip-bt-pair
 sudo echo bt-agent -c NoInputNoOutput & >> /usr/bin/chip-bt-pair
 sudo chmod 755 /usr/bin/chip-bt-pair
 echo  reboot your chip 
