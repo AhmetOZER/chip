@@ -18,3 +18,4 @@ sudo echo bt-agent -c NoInputNoOutput & >> /usr/bin/chip-bt-pair
 sudo chmod 755 /usr/bin/chip-bt-pair
 echo  reboot your chip 
 echo run sudo chip-bt-pair
+echo https://github.com/AhmetOZER/chip
