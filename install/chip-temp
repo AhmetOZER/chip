@@ -1,0 +1,19 @@
+sudo rm -rf /usr/bin/chip-temp
+
+sudo echo #!/bin/bash >> /usr/bin/chip-temp
+sudo echo for (( ; ; )) >> /usr/bin/chip-temp
+sudo echo do >> /usr/bin/chip-temp
+sudo echo lsb=$(i2cget -y -f 0 0x34 0x5f) >> /usr/bin/chip-temp
+sudo echo msb=$(i2cget -y -f 0 0x34 0x5e) >> /usr/bin/chip-temp
+sudo echo bin=$(( $(($msb << 4)) | $(($lsb & 0x0F)))) >> /usr/bin/chip-temp
+sudo echo cel=`echo $bin | awk '{printf("%.0f", ($1/10) - 144.7)}'` >> /usr/bin/chip-temp
+sudo echo fah=`echo $cel | awk '{printf("%.0f", ($1 * 1.8) + 32)}'` >> /usr/bin/chip-temp
+sudo echo echo "CHIP Temp: $cel°C $fah°F" >> /usr/bin/chip-temp
+sudo echo #echo "CHIP Temp: $cel  C" >> /usr/bin/chip-temp
+sudo echo sleep 0.7 >> /usr/bin/chip-temp
+sudo echo done >> /usr/bin/chip-temp
+
+sudo chmod 755 /usr/bin/chip-temp
+echo install complete
+echo run chip-temp
+echo https://github.com/AhmetOZER/chip
