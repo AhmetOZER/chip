@@ -7,3 +7,4 @@ sudo touch /usr/bin/chip-led-white-off
 sudo echo sudo i2cset -f -y 0 0x34 0x93 0x0 >> /usr/bin/chip-led-white-off
 sudo chmod 755 /usr/bin/chip-led-white-off
 echo install complete
+echo https://github.com/AhmetOZER/chip
