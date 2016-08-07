@@ -1,0 +1,12 @@
+sudo rm -rf /usr/bin/chip-boot-gui
+sudo rm -rf /usr/bin/chip-boot-con
+sudo touch /usr/bin/chip-boot-gui
+sudo touch /usr/bin/chip-boot-con
+sudo echo sudo systemctl set-default graphical.target >> /usr/bin/chip-boot-gui
+sudo echo sudo systemctl set-default multi-user.target >> /usr/bin/chip-boot-con
+chmod 755 /usr/bin/chip-boot-gui
+chmod 755 /usr/bin/chip-boot-con
+echo install complete
+echo if you need boot graphical desktop run chip-boot-gui
+echo if you need boot console run chip-boot-con
+echo https://github.com/AhmetOZER/chip
