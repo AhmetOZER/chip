@@ -1,0 +1,1 @@
+ffmpeg -stats -report -f alsa -i hw:0 -c:a mp3 -b:a 320k -ac 2 -async 1  http://127.0.0.1:8090/feed1.ffm
