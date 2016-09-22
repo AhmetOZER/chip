@@ -1,0 +1,1 @@
+ffmpeg -f alsa -i hw:0 -c:a mp3 -b:a 320k -ac 2 -async 1  kayit-`date +gun%d-ay-%m-yil%y-saat%H-dakika%M-saniye%S`.mp3
